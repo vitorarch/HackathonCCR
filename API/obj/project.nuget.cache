@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Y9sbm6qFswK52wREwHvQ1pK0wUUJA6mwVoRO+bNjJAViA5xZ6/k30jt/Ko9ZueARROb1brDy7MYvAqJB0Kcl0g==",
+  "dgSpecHash": "YzQ1A5/mVXK/lnIGFjcV8lPV0zJloG/Fq2N13BarXtY2GyTQ+B1s7U5Jd9jKp3cWv8ogKGaQDOh78PqYiY2mMQ==",
   "success": true,
   "projectFilePath": "D:\\HackathonCCR\\HackathonCCR\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.4.0\\fluentvalidation.dependencyinjectionextensions.9.4.0.nupkg.sha512",
     "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
+    "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.11\\microsoft.aspnetcore.authentication.jwtbearer.3.1.11.nupkg.sha512",
     "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Vitor Archanjinho\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
