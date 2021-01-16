@@ -13,7 +13,6 @@ namespace API.Services
 {
     public class Token
     {
-
         public static string CreateToken(IConfiguration config, User user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["SecurityKey"]));
