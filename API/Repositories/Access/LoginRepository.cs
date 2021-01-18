@@ -19,11 +19,10 @@ namespace API.Repositories.Access
             _context = context;
         }
 
-
-        public async Task<User> SingingIn(string cpf, string password)
+        public async Task<User> SingingIn(User user)
         {
-            var user = await _context.Users.FindAsync(cpf, password);
-            return user;
+            var _user = await _context.Users.FindAsync(user.CPF, user.Password);
+            return _user;
         }
 
     }

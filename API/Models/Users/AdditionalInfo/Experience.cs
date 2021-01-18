@@ -7,6 +7,11 @@ namespace API.Models.Users.AdditionalInfo
     {
         public Guid Id { get; set; }
 
+        public Guid ResumeId { get; set; }
+
+        [MaxLength(14)]
+        public string UserId { get; set; }
+
         [Required]
         [MaxLength(40)]
         public string Position { get; set; }
@@ -16,8 +21,11 @@ namespace API.Models.Users.AdditionalInfo
         public string Company { get; set; }
 
         [Required]
-        public DateTime EffectiveDate { get; set; }
-        public DateTime? ResignationDate { get; set; }
+        [MaxLength(50)]
+        public string EffectiveDate { get; set; }
+
+        [MaxLength(50)]
+        public string ResignationDate { get; set; }
 
     }
 }

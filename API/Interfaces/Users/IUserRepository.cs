@@ -1,4 +1,4 @@
-﻿using API.Models.Company.Jobs;
+﻿using API.Models.Companies.Jobs;
 using API.Models.Culture.Events;
 using API.Models.Culture.Posts;
 using API.Models.Users;
@@ -11,14 +11,11 @@ namespace API.Interfaces.Users
 {
     public interface IUserRepository
     {
-        public Task<IEnumerable<Job>> GetJobs();
-
-        public Task<IEnumerable<Post>> GetPosts();
-
-        public Task<IEnumerable<Event>> GetEvents();
-
         public Task<User> GetUserProfile(string cpf);
 
+        public Task<User> EditUserProfile(User user);
+
+        public Task<bool> DeleteUserProfile(string cpf);
 
     }
 }

@@ -8,7 +8,7 @@ namespace API.Interfaces.Access
 {
     public interface ILoginRepository
     {
-        public Task<User> SingingIn(string cpf, string password);
+        public Task<User> SingingIn(User user);
 
     }
 }

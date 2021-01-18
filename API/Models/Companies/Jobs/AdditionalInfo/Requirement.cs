@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace API.Models.Company.Jobs.AdditionalInfo
+namespace API.Models.Companies.Jobs.AdditionalInfo
 {
     public class Requirement
     {
@@ -9,5 +9,6 @@ namespace API.Models.Company.Jobs.AdditionalInfo
 
         [MaxLength(40)]
         public string Requesite { get; set; }
+        public Guid JobId { get; set; }
     }
 }

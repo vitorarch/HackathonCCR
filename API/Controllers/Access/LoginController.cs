@@ -1,4 +1,5 @@
 ﻿using API.Interfaces.Access;
+using API.Models.Users;
 using API.Repositories.Access;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -17,11 +18,19 @@ namespace API.Controllers.Access
             _loginRepository = loginRepository;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login([FromBody] string cpf, string password)
+        [HttpGet("teste")]
+        public IActionResult Login()
         {
-            var user = await _loginRepository.SingingIn(cpf, password);
-            return Ok(user);
+            return Ok("teste");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] User user)
+        {
+            var _user = await _loginRepository.SingingIn(user);
+
+            if (_user == null) return NotFound("Usuário não encontrado!");
+            else return Ok(_user);
         }
 
     }

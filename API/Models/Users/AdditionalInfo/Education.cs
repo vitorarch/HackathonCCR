@@ -7,6 +7,11 @@ namespace API.Models.Users.AdditionalInfo
     {
         public Guid Id { get; set; }
 
+        [MaxLength(14)]
+        public string UserId { get; set; }
+
+        public Guid ResumeId { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Institution { get; set; }
@@ -20,9 +25,12 @@ namespace API.Models.Users.AdditionalInfo
         public string FieldOfStudy { get; set; }
 
         [Required]
-        public DateTime StartDate { get; set; }
+        [MaxLength(50)]
+        public string StartDate { get; set; }
 
-        public DateTime? EndDate { get; set; }
+
+        [MaxLength(50)]
+        public string? EndDate { get; set; }
 
 
 

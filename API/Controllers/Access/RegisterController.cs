@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace API.Controllers.Access
 {
     [ApiController]
-    [Route("/register")]
+    [Route("register")]
 
     public class RegisterController : ControllerBase
     {
@@ -24,8 +24,10 @@ namespace API.Controllers.Access
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] User user)
         {
-            await _registerRepository.SingingUp(user);
-            return Ok();
+            var result = await _registerRepository.SingingUp(user);
+
+            if (!result) return BadRequest("Objeto enviado de forma incorreta");
+            return Ok(user);
         }
     }
 }

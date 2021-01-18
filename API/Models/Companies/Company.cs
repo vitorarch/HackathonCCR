@@ -1,5 +1,5 @@
 ﻿using API.Models.Advertisements;
-using API.Models.Company.Jobs;
+using API.Models.Companies.Jobs;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -64,11 +64,11 @@ namespace API.Models.Companies
         [MaxLength(25)]
         public string Sector { get; set; }
 
+        public string Photo { get; set; }
+
         [Required]
         [MaxLength(20)]
         public string Role { get; set; }
-        public IEnumerable<Job> JobsOffered { get; set; } = new List<Job>();
-        public IEnumerable<Advertisement> Advertisements { get; set; } = new List<Advertisement>();
 
     }
 }

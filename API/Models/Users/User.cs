@@ -1,4 +1,4 @@
-﻿using API.Models.Company.Jobs.AdditionalInfo;
+﻿using API.Models.Companies.Jobs.AdditionalInfo;
 using API.Models.Users.Resumes;
 using System;
 using System.Collections.Generic;
@@ -52,19 +52,21 @@ namespace API.Models.Users
 
         [Required]
         [MaxLength(20)]
+
         public string Gender { get; set; }
 
         [Required]
-        public DateTime BithDate { get; set; }
+        [MaxLength(30)]
+        public string BithDate { get; set; }
 
         public string Photo { get; set; }
-
+        
+        [Required]
+        [MaxLength(50)]
         public string Password { get; set; }
 
+        [MaxLength(25)]
         public string Role { get; set; }
 
-        public Resume Resume { get; set; }
-
-        public IEnumerable<JobManagement> Applications { get; set; } = new List<JobManagement>();
     }
 }

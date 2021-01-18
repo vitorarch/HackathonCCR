@@ -25,12 +25,20 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
                     b.Property<string>("CompanyId")
+                        .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("EndDate")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Image")
                         .HasMaxLength(20000)
@@ -41,9 +49,11 @@ namespace API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("StartDate")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasIndex("CompanyId");
+                    b.HasKey("Id");
 
                     b.ToTable("Advertisements");
                 });
@@ -105,6 +115,9 @@ namespace API.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -130,13 +143,13 @@ namespace API.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("API.Models.Company.Jobs.AdditionalInfo.Differential", b =>
+            modelBuilder.Entity("API.Models.Companies.Jobs.AdditionalInfo.Differential", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("JobId")
+                    b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Knowlegde")
@@ -145,39 +158,30 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobId");
-
                     b.ToTable("Differentials");
                 });
 
-            modelBuilder.Entity("API.Models.Company.Jobs.AdditionalInfo.JobManagement", b =>
+            modelBuilder.Entity("API.Models.Companies.Jobs.AdditionalInfo.JobManagement", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("UserId")
+                        .HasMaxLength(18)
+                        .HasColumnType("nvarchar(18)");
+
+                    b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("JobId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserCPF")
-                        .HasColumnType("nvarchar(14)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobId");
-
-                    b.HasIndex("UserCPF");
+                    b.HasKey("UserId");
 
                     b.ToTable("JobManagements");
                 });
 
-            modelBuilder.Entity("API.Models.Company.Jobs.AdditionalInfo.Requirement", b =>
+            modelBuilder.Entity("API.Models.Companies.Jobs.AdditionalInfo.Requirement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("JobId")
+                    b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Requesite")
@@ -186,12 +190,10 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobId");
-
                     b.ToTable("Requirements");
                 });
 
-            modelBuilder.Entity("API.Models.Company.Jobs.Job", b =>
+            modelBuilder.Entity("API.Models.Companies.Jobs.Job", b =>
                 {
                     b.Property<Guid>("JobId")
                         .ValueGeneratedOnAdd()
@@ -202,7 +204,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("CompanyId")
-                        .HasColumnType("nvarchar(18)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(200)
@@ -217,8 +219,6 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.HasKey("JobId");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Jobs");
                 });
@@ -238,8 +238,10 @@ namespace API.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -306,8 +308,9 @@ namespace API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("EndDate")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("FieldOfStudy")
                         .IsRequired()
@@ -319,15 +322,19 @@ namespace API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid?>("ResumeId")
+                    b.Property<Guid>("ResumeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("StartDate")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ResumeId");
 
                     b.ToTable("Education");
                 });
@@ -343,23 +350,28 @@ namespace API.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<DateTime>("EffectiveDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("EffectiveDate")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Position")
                         .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<DateTime?>("ResignationDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ResignationDate")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid?>("ResumeId")
+                    b.Property<Guid>("ResumeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId")
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
-                    b.HasIndex("ResumeId");
+                    b.HasKey("Id");
 
                     b.ToTable("Experiences");
                 });
@@ -375,12 +387,14 @@ namespace API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid?>("ResumeId")
+                    b.Property<Guid>("ResumeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId")
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
-                    b.HasIndex("ResumeId");
+                    b.HasKey("Id");
 
                     b.ToTable("Skills");
                 });
@@ -402,6 +416,10 @@ namespace API.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Resumes");
@@ -418,8 +436,10 @@ namespace API.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
-                    b.Property<DateTime>("BithDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("BithDate")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("CEP")
                         .IsRequired()
@@ -459,7 +479,9 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(13)
@@ -468,11 +490,9 @@ namespace API.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("ResumeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("State")
                         .IsRequired()
@@ -481,108 +501,7 @@ namespace API.Migrations
 
                     b.HasKey("CPF");
 
-                    b.HasIndex("ResumeId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("API.Models.Advertisements.Advertisement", b =>
-                {
-                    b.HasOne("API.Models.Companies.Company", null)
-                        .WithMany("Advertisements")
-                        .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("API.Models.Company.Jobs.AdditionalInfo.Differential", b =>
-                {
-                    b.HasOne("API.Models.Company.Jobs.Job", null)
-                        .WithMany("Differentials")
-                        .HasForeignKey("JobId");
-                });
-
-            modelBuilder.Entity("API.Models.Company.Jobs.AdditionalInfo.JobManagement", b =>
-                {
-                    b.HasOne("API.Models.Company.Jobs.Job", null)
-                        .WithMany("Applications")
-                        .HasForeignKey("JobId");
-
-                    b.HasOne("API.Models.Users.User", null)
-                        .WithMany("Applications")
-                        .HasForeignKey("UserCPF");
-                });
-
-            modelBuilder.Entity("API.Models.Company.Jobs.AdditionalInfo.Requirement", b =>
-                {
-                    b.HasOne("API.Models.Company.Jobs.Job", null)
-                        .WithMany("Requirements")
-                        .HasForeignKey("JobId");
-                });
-
-            modelBuilder.Entity("API.Models.Company.Jobs.Job", b =>
-                {
-                    b.HasOne("API.Models.Companies.Company", null)
-                        .WithMany("JobsOffered")
-                        .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("API.Models.Users.AdditionalInfo.Education", b =>
-                {
-                    b.HasOne("API.Models.Users.Resumes.Resume", null)
-                        .WithMany("Education")
-                        .HasForeignKey("ResumeId");
-                });
-
-            modelBuilder.Entity("API.Models.Users.AdditionalInfo.Experience", b =>
-                {
-                    b.HasOne("API.Models.Users.Resumes.Resume", null)
-                        .WithMany("Experiences")
-                        .HasForeignKey("ResumeId");
-                });
-
-            modelBuilder.Entity("API.Models.Users.AdditionalInfo.Skill", b =>
-                {
-                    b.HasOne("API.Models.Users.Resumes.Resume", null)
-                        .WithMany("Skills")
-                        .HasForeignKey("ResumeId");
-                });
-
-            modelBuilder.Entity("API.Models.Users.User", b =>
-                {
-                    b.HasOne("API.Models.Users.Resumes.Resume", "Resume")
-                        .WithMany()
-                        .HasForeignKey("ResumeId");
-
-                    b.Navigation("Resume");
-                });
-
-            modelBuilder.Entity("API.Models.Companies.Company", b =>
-                {
-                    b.Navigation("Advertisements");
-
-                    b.Navigation("JobsOffered");
-                });
-
-            modelBuilder.Entity("API.Models.Company.Jobs.Job", b =>
-                {
-                    b.Navigation("Applications");
-
-                    b.Navigation("Differentials");
-
-                    b.Navigation("Requirements");
-                });
-
-            modelBuilder.Entity("API.Models.Users.Resumes.Resume", b =>
-                {
-                    b.Navigation("Education");
-
-                    b.Navigation("Experiences");
-
-                    b.Navigation("Skills");
-                });
-
-            modelBuilder.Entity("API.Models.Users.User", b =>
-                {
-                    b.Navigation("Applications");
                 });
 #pragma warning restore 612, 618
         }

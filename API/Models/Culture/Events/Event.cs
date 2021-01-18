@@ -18,7 +18,8 @@ namespace API.Models.Culture.Events
         public string Description { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        [MaxLength(30)]
+        public string Date { get; set; }
 
         [Required]
         [MaxLength(100)]

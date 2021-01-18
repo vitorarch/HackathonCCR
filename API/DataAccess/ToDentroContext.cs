@@ -1,6 +1,6 @@
 ﻿using API.Models.Advertisements;
-using API.Models.Company.Jobs;
-using API.Models.Company.Jobs.AdditionalInfo;
+using API.Models.Companies.Jobs;
+using API.Models.Companies.Jobs.AdditionalInfo;
 using API.Models.Culture.Events;
 using API.Models.Culture.Posts;
 using API.Models.Users.AdditionalInfo;
@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using API.Models.Companies;
 using API.Models.Users;
 using API.Models.Users.Resumes;
+using API.Models.Companies.Jobs;
+using API.Models.Companies.Jobs.AdditionalInfo;
 
 namespace API.DataAccess
 {

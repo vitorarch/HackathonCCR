@@ -9,7 +9,7 @@ namespace API.Interfaces.Access
     public interface IRegisterRepository
     {
 
-        public Task SingingUp(User user);
+        public Task<bool> SingingUp(User user);
 
     }
 }

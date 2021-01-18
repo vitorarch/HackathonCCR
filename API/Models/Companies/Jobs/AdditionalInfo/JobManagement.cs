@@ -1,9 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace API.Models.Company.Jobs.AdditionalInfo
+namespace API.Models.Companies.Jobs.AdditionalInfo
 {
     public class JobManagement
     {
-        public Guid Id { get; set; }
+        [Key]
+        [MaxLength(18)]
+        public string UserId { get; set; }
+
+        public Guid JobId { get; set; }
     }
 }

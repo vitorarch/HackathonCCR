@@ -7,6 +7,9 @@ namespace API.Models.Advertisements
     {
         public Guid Id { get; set; }
 
+        [MaxLength(18)]
+        public string CompanyId { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
@@ -16,5 +19,14 @@ namespace API.Models.Advertisements
 
         [MaxLength(200)]
         public string Description { get; set; }
+
+
+        [MaxLength(50)]
+        public string StartDate { get; set; }
+
+        [MaxLength(50)]
+        public string EndDate { get; set; }
+
+        public bool Active { get; set; }
     }
 }

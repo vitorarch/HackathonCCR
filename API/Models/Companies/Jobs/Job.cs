@@ -1,26 +1,22 @@
-﻿using API.Models.Company.Jobs.AdditionalInfo;
+﻿using API.Models.Companies.Jobs.AdditionalInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace API.Models.Company.Jobs
+namespace API.Models.Companies.Jobs
 {
     public class Job
     {
 
         public Guid JobId { get; set; }
 
+        public string CompanyId { get; set; }
+
         [MaxLength(15)]
         public string Position { get; set; }
 
         [MaxLength(200)]
         public string Description { get; set; }
-
-        public IEnumerable<Requirement> Requirements { get; set; } = new List<Requirement>();
-
-        public IEnumerable<Differential> Differentials { get; set; } = new List<Differential>();
-
-        public IEnumerable<JobManagement> Applications { get; set; } = new List<JobManagement>();
 
         [MaxLength(25)]
         public string PayRange { get; set; }
